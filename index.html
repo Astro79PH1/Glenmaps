@@ -83,6 +83,13 @@
         goToSection();
       }
     });
+    const inputField = document.getElementById('roomInput');
+
+      inputField.addEventListener('input', function(event) {
+         const currentValue = event.target.value;
+        console.log("Utilisateur a tapé : ", currentValue);
+    });
+    
   </script>
 
 </body>
