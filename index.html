@@ -121,9 +121,11 @@
     const inputField = document.getElementById('roomInput');
 
     // Écoute la frappe en direct dans le champ texte
-    inputField.addEventListener('input', function(event) {
-      const currentValue = event.target.value;
-      console.log("Utilisateur a tapé : ", currentValue);
+   inputField.addEventListener('input', function(event) {
+  const currentValue = event.target.value.trim();
+  showSuggestions(currentValue);
+});
+
     });
 
     // Écoute la touche Entrée pour lancer la recherche
