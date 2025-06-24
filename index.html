@@ -2,89 +2,105 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Glenmaps Finder</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 50px;
-      background-color: #f0f4f8; /* fond clair uniquement sur le body */
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #12233e; /* Bleu partout */
+      color: white;
       margin: 0;
+      padding: 50px 20px;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
     }
     header {
-      background-color: #12233e; /* fond bleu dans header seulement */
-      padding: 20px 0;
       margin-bottom: 40px;
+      width: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
     }
     header img {
-      max-height: 80px;
+      max-height: 120px; /* logo plus grand */
       width: auto;
       display: block;
     }
     h1 {
-      color: #12233e;
-      margin-bottom: 10px;
+      font-size: 3rem;
+      margin: 0 0 15px 0;
       font-weight: 700;
     }
     p {
-      font-size: 1.1em;
-      color: #333;
-      margin-top: 0;
-      margin-bottom: 30px;
+      font-size: 1.3rem;
+      margin: 0 0 30px 0;
+      max-width: 500px;
     }
     input {
-      font-size: 1.2em;
-      padding: 10px;
-      margin-top: 20px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
+      font-size: 1.4rem;
+      padding: 15px 20px;
+      border-radius: 10px;
+      border: none;
+      width: 320px;
+      max-width: 90vw;
       outline: none;
-      transition: border-color 0.3s ease;
+      margin-bottom: 15px;
+      box-sizing: border-box;
     }
     input:focus {
-      border-color: #12233e;
+      outline: 3px solid #005792;
     }
     button {
-      font-size: 1.2em;
-      padding: 10px 20px;
-      margin-top: 20px;
-      border-radius: 5px;
+      font-size: 1.6rem;
+      padding: 15px 40px;
+      border-radius: 10px;
       border: none;
       background-color: #005792;
       color: white;
       cursor: pointer;
       transition: background-color 0.3s ease;
+      width: 320px;
+      max-width: 90vw;
+      font-weight: 700;
+      box-shadow: 0 5px 10px rgba(0,87,146,0.5);
     }
     button:hover {
       background-color: #003f6b;
+      box-shadow: 0 7px 14px rgba(0,63,107,0.7);
     }
     #suggestions {
-      max-width: 300px;
+      max-width: 320px;
+      width: 90vw;
       margin: 10px auto 0;
       text-align: left;
-      background-color: white;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      background-color: #1b2a54;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.7);
+      color: white;
+      overflow: hidden;
     }
     #suggestions div {
-      padding: 8px 12px;
+      padding: 12px 16px;
       cursor: pointer;
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid #24416d;
+      user-select: none;
+    }
+    #suggestions div:last-child {
+      border-bottom: none;
     }
     #suggestions div:hover {
-      background-color: #f0f4f8;
+      background-color: #005792;
     }
   </style>
 </head>
 <body>
 
   <header>
-    <img src="https://github.com/Astro79PH1/Glenmaps/raw/main/2-removebg-preview.png" alt="Glenmaps Logo" onerror="this.style.display='none';" />
+    <img src="https://github.com/Astro79PH1/Glenmaps/raw/main/2-removebg-preview.png" alt="Glenmaps Logo" />
   </header>
 
   <h1>Find Your Place</h1>
