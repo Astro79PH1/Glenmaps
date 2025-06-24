@@ -34,6 +34,9 @@
       border: 1px solid #ccc;
       border-radius: 5px;
     }
+    #suggestions div:hover {
+      background-color: #e0e7f1;
+    }
   </style>
 </head>
 <body>
@@ -41,27 +44,11 @@
   <h1>Find Your Place</h1>
   <p>Type a room name (e.g. "library", "moncrieff", "tech"):</p>
 
-  <input type="text" id="roomInput" placeholder="Enter room code" />
+  <input type="text" id="roomInput" placeholder="Enter room code" autocomplete="off" />
   <div id="suggestions"></div>
   <button onclick="goToSection()">Go</button>
 
   <script>
-    const rooms = [
-      'front arch',
-      'library',
-      'north cloister',
-      'history department',
-      'moncrieff center',
-      'english department',
-      'maths and languages',
-      'sciences department',
-      'it department',
-      'pe department',
-      'music school',
-      'art school',
-      'technology department'
-    ];
-
     const sectionMap = {
       'front arch': '#front-arch',
       'front': '#front-arch',
@@ -91,6 +78,9 @@
       'tech': '#tech-department'
     };
 
+    // Génère la liste des rooms depuis les clés de sectionMap (sans doublons)
+    const rooms = Array.from(new Set(Object.keys(sectionMap)));
+
     const baseURL = 'https://glenmaps.my.canva.site/';
 
     function goToSection() {
@@ -108,6 +98,7 @@
 
       if (query.length === 0) return;
 
+      // Filtre les rooms qui commencent par la saisie
       const filtered = rooms.filter(room => room.startsWith(query.toLowerCase())).slice(0, 5);
 
       filtered.forEach(suggestion => {
@@ -116,23 +107,25 @@
         div.style.padding = '5px';
         div.style.cursor = 'pointer';
         div.style.borderBottom = '1px solid #ccc';
+
         div.addEventListener('click', () => {
           document.getElementById('roomInput').value = suggestion;
           suggestionsDiv.innerHTML = '';
           goToSection();
         });
+
         suggestionsDiv.appendChild(div);
       });
     }
 
     const inputField = document.getElementById('roomInput');
 
-    inputField.addEventListener('input', function(event) {
+    inputField.addEventListener('input', (event) => {
       const currentValue = event.target.value.trim();
       showSuggestions(currentValue);
     });
 
-    inputField.addEventListener('keypress', function(event) {
+    inputField.addEventListener('keypress', (event) => {
       if (event.key === "Enter") {
         goToSection();
       }
