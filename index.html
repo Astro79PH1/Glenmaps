@@ -78,18 +78,20 @@
       }
     }
 
-    document.getElementById("roomInput").addEventListener("keypress", function(event) {
+    const inputField = document.getElementById('roomInput');
+
+    // Écoute la frappe en direct dans le champ texte
+    inputField.addEventListener('input', function(event) {
+      const currentValue = event.target.value;
+      console.log("Utilisateur a tapé : ", currentValue);
+    });
+
+    // Écoute la touche Entrée pour lancer la recherche
+    inputField.addEventListener('keypress', function(event) {
       if (event.key === "Enter") {
         goToSection();
       }
     });
-    const inputField = document.getElementById('roomInput');
-
-      inputField.addEventListener('input', function(event) {
-         const currentValue = event.target.value;
-        console.log("Utilisateur a tapé : ", currentValue);
-    });
-    
   </script>
 
 </body>
