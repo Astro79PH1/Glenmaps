@@ -55,6 +55,29 @@
 ];
 
     function goToSection() {
+      function showSuggestions(query) {
+  const suggestionsDiv = document.getElementById('suggestions');
+  suggestionsDiv.innerHTML = ''; // vide l’ancienne liste
+
+  if (query.length === 0) return;
+
+  const filtered = rooms.filter(room => room.startsWith(query.toLowerCase())).slice(0, 5); // max 5 suggestions
+
+  filtered.forEach(suggestion => {
+    const div = document.createElement('div');
+    div.textContent = suggestion;
+    div.style.padding = '5px';
+    div.style.cursor = 'pointer';
+    div.style.borderBottom = '1px solid #ccc';
+    div.addEventListener('click', () => {
+      document.getElementById('roomInput').value = suggestion;
+      suggestionsDiv.innerHTML = '';
+      goToSection();
+    });
+    suggestionsDiv.appendChild(div);
+  });
+}
+
       const input = document.getElementById('roomInput').value.trim().toLowerCase();
 
       const sectionMap = {
