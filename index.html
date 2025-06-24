@@ -26,6 +26,14 @@
     button:hover {
       background-color: #003f6b;
     }
+    #suggestions {
+      max-width: 300px;
+      margin: 10px auto 0;
+      text-align: left;
+      background-color: white;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
   </style>
 </head>
 <body>
@@ -34,83 +42,59 @@
   <p>Type a room name (e.g. "library", "moncrieff", "tech"):</p>
 
   <input type="text" id="roomInput" placeholder="Enter room code" />
-  <div id="suggestions" style="max-width: 300px; margin: 10px auto 0; text-align: left;"></div>
+  <div id="suggestions"></div>
   <button onclick="goToSection()">Go</button>
 
   <script>
     const rooms = [
-  'front arch', 'front',
-  'library',
-  'north cloister', 'north',
-  'history department', 'history',
-  'moncrieff center', 'moncrieff',
-  'english department', 'english',
-  'maths and languages', 'maths',
-  'sciences department', 'sciences',
-  'it department', 'it',
-  'pe department', 'pe',
-  'music school', 'music',
-  'art school', 'art',
-  'technology department', 'technology', 'tech'
-];
+      'front arch', 'front',
+      'library',
+      'north cloister', 'north',
+      'history department', 'history',
+      'moncrieff center', 'moncrieff',
+      'english department', 'english',
+      'maths and languages', 'maths',
+      'sciences department', 'sciences',
+      'it department', 'it',
+      'pe department', 'pe',
+      'music school', 'music',
+      'art school', 'art',
+      'technology department', 'technology', 'tech'
+    ];
+
+    const sectionMap = {
+      'front arch': '#front-arch',
+      'front': '#front-arch',
+      'library': '#library',
+      'north cloister': '#north-cloister',
+      'north': '#north-cloister',
+      'history department': '#history-department',
+      'history': '#history-department',
+      'moncrieff center': '#moncrieff-center',
+      'moncrieff': '#moncrieff-center',
+      'english department': '#english-department',
+      'english': '#english-department',
+      'maths and languages': '#maths-and-languages',
+      'maths': '#maths-and-languages',
+      'sciences department': '#sciences-department',
+      'sciences': '#sciences-department',
+      'it department': '#it-department',
+      'it': '#it-department',
+      'pe department': '#pe-department',
+      'pe': '#pe-department',
+      'music school': '#music-school',
+      'music': '#music-school',
+      'art school': '#art-school',
+      'art': '#art-school',
+      'technology department': '#tech-department',
+      'technology': '#tech-department',
+      'tech': '#tech-department'
+    };
+
+    const baseURL = 'https://glenmaps.my.canva.site/';
 
     function goToSection() {
-      function showSuggestions(query) {
-  const suggestionsDiv = document.getElementById('suggestions');
-  suggestionsDiv.innerHTML = ''; // vide l’ancienne liste
-
-  if (query.length === 0) return;
-
-  const filtered = rooms.filter(room => room.startsWith(query.toLowerCase())).slice(0, 5); // max 5 suggestions
-
-  filtered.forEach(suggestion => {
-    const div = document.createElement('div');
-    div.textContent = suggestion;
-    div.style.padding = '5px';
-    div.style.cursor = 'pointer';
-    div.style.borderBottom = '1px solid #ccc';
-    div.addEventListener('click', () => {
-      document.getElementById('roomInput').value = suggestion;
-      suggestionsDiv.innerHTML = '';
-      goToSection();
-    });
-    suggestionsDiv.appendChild(div);
-  });
-}
-
       const input = document.getElementById('roomInput').value.trim().toLowerCase();
-
-      const sectionMap = {
-        'front arch': '#front-arch',
-        'front': '#front-arch',
-        'library': '#library',
-        'north cloister': '#north-cloister',
-        'north': '#north-cloister',
-        'history department': '#history-department',
-        'history': '#history-department',
-        'moncrieff center': '#moncrieff-center',
-        'moncrieff': '#moncrieff-center',
-        'english department': '#english-department',
-        'english': '#english-department',
-        'maths and languages': '#maths-and-languages',
-        'maths': '#maths-and-languages',
-        'sciences department': '#sciences-department',
-        'sciences': '#sciences-department',
-        'it department': '#it-department',
-        'it': '#it-department',
-        'pe department': '#pe-department',
-        'pe': '#pe-department',
-        'music school': '#music-school',
-        'music': '#music-school',
-        'art school': '#art-school',
-        'art': '#art-school',
-        'technology department': '#tech-department',
-        'technology': '#tech-department',
-        'tech': '#tech-department'
-      };
-
-      const baseURL = 'https://glenmaps.my.canva.site/';
-
       if (sectionMap[input]) {
         window.location.href = baseURL + sectionMap[input];
       } else {
@@ -118,17 +102,36 @@
       }
     }
 
+    function showSuggestions(query) {
+      const suggestionsDiv = document.getElementById('suggestions');
+      suggestionsDiv.innerHTML = '';
+
+      if (query.length === 0) return;
+
+      const filtered = rooms.filter(room => room.startsWith(query.toLowerCase())).slice(0, 5);
+
+      filtered.forEach(suggestion => {
+        const div = document.createElement('div');
+        div.textContent = suggestion;
+        div.style.padding = '5px';
+        div.style.cursor = 'pointer';
+        div.style.borderBottom = '1px solid #ccc';
+        div.addEventListener('click', () => {
+          document.getElementById('roomInput').value = suggestion;
+          suggestionsDiv.innerHTML = '';
+          goToSection();
+        });
+        suggestionsDiv.appendChild(div);
+      });
+    }
+
     const inputField = document.getElementById('roomInput');
 
-    // Écoute la frappe en direct dans le champ texte
-   inputField.addEventListener('input', function(event) {
-  const currentValue = event.target.value.trim();
-  showSuggestions(currentValue);
-});
-
+    inputField.addEventListener('input', function(event) {
+      const currentValue = event.target.value.trim();
+      showSuggestions(currentValue);
     });
 
-    // Écoute la touche Entrée pour lancer la recherche
     inputField.addEventListener('keypress', function(event) {
       if (event.key === "Enter") {
         goToSection();
