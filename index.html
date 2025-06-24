@@ -38,6 +38,22 @@
   <button onclick="goToSection()">Go</button>
 
   <script>
+    const rooms = [
+  'front arch', 'front',
+  'library',
+  'north cloister', 'north',
+  'history department', 'history',
+  'moncrieff center', 'moncrieff',
+  'english department', 'english',
+  'maths and languages', 'maths',
+  'sciences department', 'sciences',
+  'it department', 'it',
+  'pe department', 'pe',
+  'music school', 'music',
+  'art school', 'art',
+  'technology department', 'technology', 'tech'
+];
+
     function goToSection() {
       const input = document.getElementById('roomInput').value.trim().toLowerCase();
 
