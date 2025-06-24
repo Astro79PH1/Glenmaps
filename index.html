@@ -1,4 +1,4 @@
-&<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -35,45 +35,38 @@
 
   <input type="text" id="roomInput" placeholder="Enter room code" />
   <button onclick="goToSection()">Go</button>
-  // Appuyer sur "Entrée" déclenche la recherche
-document.getElementById("roomInput").addEventListener("keypress", function(event) {
-  if (event.key === "Enter") {
-    goToSection();
-  }
-});
-
 
   <script>
     function goToSection() {
       const input = document.getElementById('roomInput').value.trim().toLowerCase();
 
       const sectionMap = {
-        'front arch' : '#front-arch',
-        'front' : '#front-arch',
-        'library' : '#library',
-        'north cloister' : '#north-cloister',
-        'north' : '#north-cloister',
-        'history department' : '#history-department',
-        'history' : '#history-department',
-        'moncrieff center' : '#moncrieff-center',
-        'moncrieff' : '#moncrieff-center',
-        'english department' : '#english-department',
-        'english' : '#english-department',
-        'maths and languages' : '#maths-and-languages',
-        'maths' : '#maths-and-languages',
-        'sciences department' : '#sciences-department',
-        'sciences' : '#sciences-department',
-        'it department' : '#it-department',
-        'it' : '#it-department',
-        'pe department' : '#pe-department',
-        'pe' : '#pe-department',
-        'music school' : '#music-school',
-        'music' : '#music-school',
-        'art school' : '#art-school',
-        'art' : '#art-school',
-        'technology department' : '#tech-department',
-        'technology' : '#tech-department',
-        'tech' : '#tech-department'
+        'front arch': '#front-arch',
+        'front': '#front-arch',
+        'library': '#library',
+        'north cloister': '#north-cloister',
+        'north': '#north-cloister',
+        'history department': '#history-department',
+        'history': '#history-department',
+        'moncrieff center': '#moncrieff-center',
+        'moncrieff': '#moncrieff-center',
+        'english department': '#english-department',
+        'english': '#english-department',
+        'maths and languages': '#maths-and-languages',
+        'maths': '#maths-and-languages',
+        'sciences department': '#sciences-department',
+        'sciences': '#sciences-department',
+        'it department': '#it-department',
+        'it': '#it-department',
+        'pe department': '#pe-department',
+        'pe': '#pe-department',
+        'music school': '#music-school',
+        'music': '#music-school',
+        'art school': '#art-school',
+        'art': '#art-school',
+        'technology department': '#tech-department',
+        'technology': '#tech-department',
+        'tech': '#tech-department'
       };
 
       const baseURL = 'https://glenmaps.my.canva.site/';
@@ -84,6 +77,13 @@ document.getElementById("roomInput").addEventListener("keypress", function(event
         alert("This location doesn't exist. Please try again.");
       }
     }
+
+    // ✅ Appuyer sur "Entrée" déclenche la recherche
+    document.getElementById("roomInput").addEventListener("keypress", function(event) {
+      if (event.key === "Enter") {
+        goToSection();
+      }
+    });
   </script>
 
 </body>
