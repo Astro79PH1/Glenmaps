@@ -10,18 +10,47 @@
       text-align: center;
       padding: 50px;
       background-color: #f0f4f8;
+      margin: 0;
+    }
+    header {
+      background-color: #12233e;
+      padding: 20px 0;
+      margin-bottom: 40px;
+    }
+    header img {
+      height: 60px;
+      width: auto;
+      vertical-align: middle;
+    }
+    h1 {
+      color: #12233e;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    p {
+      font-size: 1.1em;
+      color: #333;
+      margin-top: 0;
+      margin-bottom: 30px;
     }
     input, button {
       font-size: 1.2em;
       padding: 10px;
       margin-top: 20px;
       border-radius: 5px;
+      border: 1px solid #ccc;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+    input:focus {
+      border-color: #12233e;
     }
     button {
       background-color: #005792;
       color: white;
       border: none;
       cursor: pointer;
+      transition: background-color 0.3s ease;
     }
     button:hover {
       background-color: #003f6b;
@@ -33,13 +62,23 @@
       background-color: white;
       border: 1px solid #ccc;
       border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    #suggestions div {
+      padding: 8px 12px;
+      cursor: pointer;
+      border-bottom: 1px solid #eee;
     }
     #suggestions div:hover {
-      background-color: #e0e7f1;
+      background-color: #f0f4f8;
     }
   </style>
 </head>
 <body>
+
+  <header>
+    <img src="https://github.com/Astro79PH1/Glenmaps/blob/main/Design_sans_titre__1_-removebg-preview.png?raw=true" alt="Glenmaps Logo" />
+  </header>
 
   <h1>Find Your Place</h1>
   <p>Type a room name (e.g. "library", "moncrieff", "tech"):</p>
@@ -49,6 +88,22 @@
   <button onclick="goToSection()">Go</button>
 
   <script>
+    const rooms = [
+      'front arch',
+      'library',
+      'north cloister',
+      'history department',
+      'moncrieff center',
+      'english department',
+      'maths and languages',
+      'sciences department',
+      'it department',
+      'pe department',
+      'music school',
+      'art school',
+      'technology department'
+    ];
+
     const sectionMap = {
       'front arch': '#front-arch',
       'front': '#front-arch',
@@ -78,9 +133,6 @@
       'tech': '#tech-department'
     };
 
-    // Génère la liste des rooms depuis les clés de sectionMap (sans doublons)
-    const rooms = Array.from(new Set(Object.keys(sectionMap)));
-
     const baseURL = 'https://glenmaps.my.canva.site/';
 
     function goToSection() {
@@ -98,34 +150,28 @@
 
       if (query.length === 0) return;
 
-      // Filtre les rooms qui commencent par la saisie
       const filtered = rooms.filter(room => room.startsWith(query.toLowerCase())).slice(0, 5);
 
       filtered.forEach(suggestion => {
         const div = document.createElement('div');
         div.textContent = suggestion;
-        div.style.padding = '5px';
-        div.style.cursor = 'pointer';
-        div.style.borderBottom = '1px solid #ccc';
-
         div.addEventListener('click', () => {
           document.getElementById('roomInput').value = suggestion;
           suggestionsDiv.innerHTML = '';
           goToSection();
         });
-
         suggestionsDiv.appendChild(div);
       });
     }
 
     const inputField = document.getElementById('roomInput');
 
-    inputField.addEventListener('input', (event) => {
+    inputField.addEventListener('input', function(event) {
       const currentValue = event.target.value.trim();
       showSuggestions(currentValue);
     });
 
-    inputField.addEventListener('keypress', (event) => {
+    inputField.addEventListener('keypress', function(event) {
       if (event.key === "Enter") {
         goToSection();
       }
