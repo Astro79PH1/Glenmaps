@@ -8,76 +8,90 @@
     body {
       font-family: Arial, sans-serif;
       text-align: center;
-      padding: 50px;
-      background-color: #f0f4f8;
+      padding: 50px 20px;
       margin: 0;
+      background-color: #12233e;
+      color: white;
+      min-height: 100vh;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     header {
-      background-color: #12233e; /* ton bleu spécifique */
-      padding: 20px 0;
       margin-bottom: 40px;
     }
     header img {
-      height: 60px;
+      height: 120px;
       width: auto;
-      vertical-align: middle;
+      display: block;
+      margin: 0 auto;
     }
     h1 {
-      color: #12233e;
       margin-bottom: 10px;
       font-weight: 700;
+      font-size: 2.4em;
+      color: white;
     }
     p {
-      font-size: 1.1em;
-      color: #333;
+      font-size: 1.2em;
       margin-top: 0;
       margin-bottom: 30px;
+      color: #d1d7e0;
     }
-    input, button {
+    input {
       font-size: 1.2em;
       padding: 10px;
-      margin-top: 20px;
       border-radius: 5px;
-      border: 1px solid #ccc;
+      border: none;
       outline: none;
-      transition: border-color 0.3s ease;
+      width: 280px;
+      max-width: 90vw;
+      box-sizing: border-box;
     }
     input:focus {
-      border-color: #12233e;
-    }
-    button {
-      background-color: #005792;
-      color: white;
-      border: none;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    button:hover {
-      background-color: #003f6b;
+      outline: 2px solid #68a0cf;
     }
     #suggestions {
       max-width: 300px;
       margin: 10px auto 0;
       text-align: left;
       background-color: white;
-      border: 1px solid #ccc;
+      color: black;
       border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      overflow: hidden;
     }
     #suggestions div {
-      padding: 8px 12px;
+      padding: 10px 15px;
       cursor: pointer;
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid #ddd;
+      font-size: 1em;
     }
     #suggestions div:hover {
       background-color: #f0f4f8;
+    }
+    button {
+      margin-top: 20px; /* <-- espace entre suggestions et bouton */
+      font-size: 1.4em;
+      padding: 15px 50px;
+      border-radius: 8px;
+      border: none;
+      background-color: #005792;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0,87,146,0.4);
+    }
+    button:hover {
+      background-color: #003f6b;
     }
   </style>
 </head>
 <body>
 
   <header>
-    <img src="https://github.com/Astro79PH1/Glenmaps/raw/main/2-removebg-preview.png" alt="Glenmaps Logo" />
+    <img src="https://github.com/Astro79PH1/Glenmaps/blob/main/2-removebg-preview.png?raw=true" alt="Glenmaps Logo" />
   </header>
 
   <h1>Find Your Place</h1>
