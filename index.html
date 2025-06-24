@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Glenmaps Finder</title>
   <style>
-    /* Reset margin/padding */
     * {
       box-sizing: border-box;
     }
@@ -13,31 +12,29 @@
       font-family: Arial, sans-serif;
       text-align: center;
       padding: 40px 20px;
-      background-color: #f0f4f8;
       margin: 0;
+      background-color: #12233e; /* fond bleu partout */
+      color: #e0e7ff; /* texte clair */
     }
     header {
-      background-color: #12233e;
-      padding: 20px 0;
       margin-bottom: 40px;
       display: flex;
       justify-content: center;
       align-items: center;
     }
     header img {
-      height: 60px;
+      height: 120px; /* logo plus grand */
       width: auto;
       display: block;
     }
     h1 {
-      color: #12233e;
+      color: #e0e7ff;
       margin-bottom: 10px;
       font-weight: 700;
-      font-size: 2rem;
+      font-size: 2.5rem;
     }
     p {
       font-size: 1.1em;
-      color: #333;
       margin-top: 0;
       margin-bottom: 30px;
     }
@@ -45,25 +42,29 @@
       font-size: 1.2em;
       padding: 10px;
       border-radius: 5px;
-      border: 1px solid #ccc;
+      border: none;
       outline: none;
-      transition: border-color 0.3s ease;
       max-width: 300px;
       width: 100%;
       box-sizing: border-box;
       margin: 10px auto;
       display: block;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    input {
+      background-color: #1e2a56;
+      color: #e0e7ff;
+    }
+    input::placeholder {
+      color: #a3aed0;
     }
     input:focus {
-      border-color: #12233e;
+      background-color: #283a85;
     }
     button {
       background-color: #005792;
-      color: white;
-      border: none;
+      color: #e0e7ff;
       cursor: pointer;
-      max-width: 320px;
-      transition: background-color 0.3s ease;
     }
     button:hover {
       background-color: #003f6b;
@@ -72,18 +73,19 @@
       max-width: 300px;
       margin: 10px auto 0;
       text-align: left;
-      background-color: white;
-      border: 1px solid #ccc;
+      background-color: #1e2a56;
       border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+      color: #e0e7ff;
+      font-weight: 600;
     }
     #suggestions div {
       padding: 8px 12px;
       cursor: pointer;
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid #394b88;
     }
     #suggestions div:hover {
-      background-color: #f0f4f8;
+      background-color: #283a85;
     }
   </style>
 </head>
