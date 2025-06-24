@@ -5,50 +5,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Glenmaps Finder</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 40px 20px;
+    /* On met le fond bleu sur html et body et on force 100% hauteur */
+    html, body {
+      height: 100%;
       margin: 0;
-      background-color: #12233e; /* fond bleu partout */
-      color: #e0e7ff; /* texte clair */
+      background-color: #12233e;
+      font-family: Arial, sans-serif;
+      color: #e0e7ff;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 40px 20px;
+      box-sizing: border-box;
     }
     header {
       margin-bottom: 40px;
+      width: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
     }
     header img {
-      height: 120px; /* logo plus grand */
+      height: 160px; /* logo encore plus grand */
       width: auto;
       display: block;
     }
     h1 {
-      color: #e0e7ff;
       margin-bottom: 10px;
       font-weight: 700;
-      font-size: 2.5rem;
+      font-size: 3rem;
     }
     p {
-      font-size: 1.1em;
+      font-size: 1.2em;
       margin-top: 0;
       margin-bottom: 30px;
+      max-width: 600px;
     }
     input, button {
       font-size: 1.2em;
-      padding: 10px;
-      border-radius: 5px;
+      padding: 12px 15px;
+      border-radius: 6px;
       border: none;
       outline: none;
-      max-width: 300px;
+      max-width: 320px;
       width: 100%;
-      box-sizing: border-box;
       margin: 10px auto;
       display: block;
+      box-sizing: border-box;
       transition: background-color 0.3s ease, color 0.3s ease;
     }
     input {
@@ -65,22 +70,24 @@
       background-color: #005792;
       color: #e0e7ff;
       cursor: pointer;
+      font-weight: 700;
     }
     button:hover {
       background-color: #003f6b;
     }
     #suggestions {
-      max-width: 300px;
+      max-width: 320px;
       margin: 10px auto 0;
       text-align: left;
       background-color: #1e2a56;
-      border-radius: 5px;
+      border-radius: 6px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.4);
       color: #e0e7ff;
       font-weight: 600;
+      box-sizing: border-box;
     }
     #suggestions div {
-      padding: 8px 12px;
+      padding: 10px 14px;
       cursor: pointer;
       border-bottom: 1px solid #394b88;
     }
